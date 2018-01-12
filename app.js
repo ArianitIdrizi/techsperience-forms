@@ -72,16 +72,7 @@ app.get("/",function(req,res){
 			});
 	});
 	
-app.get("/students/:id",function(req,res){
-	students.findOne({_id:objectId(req.params.id)}, function(err, doc){
-		if (err){
-		console.log(err);
-		}
-		res.render("show",{doc:doc});
-	});
-	
 
-});
 	
 
 
