@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="main.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+	<style>
+	body{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+.formBox  h1{
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	margin-bottom: 50px;
+	
+	font-size: 28px;
+	color:white;
+}
+.inputBox{
+	position: relative;
+	box-sizing: border-box;
+	margin-bottom: 50px;
+}
+.inputBox .inputText{
+	position: relative;
+    font-size: 24px;
+    line-height: 50px;
+    transition: .5s;
+    opacity: .5;
+}
+.inputBox .input{
+	position: relative;
+	width: 100%;
+	height: 50px;
+	background: transparent;
+	border: none;
+    outline: none;
+    font-size: 24px;
+    border-bottom: 1px solid rgba(0,0,0,.5);
+
+}
+.focus .inputText{
+	transform: translateY(-30px);
+	font-size: 18px;
+	opacity: 1;
+	color: #00bcd4;
+
+}
+textarea{
+	height: 100px !important;
+}
+.button{
+	width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+    background: #31DA89;
+    color: #fff;
+}
+input.parsley-success,
+select.parsley-success,
+textarea.parsley-success {
+  color: #468847;
+  background-color: #DFF0D8;
+  border: 1px solid #D6E9C6;
+}
+
+input.parsley-error,
+select.parsley-error,
+textarea.parsley-error {
+  color: #B94A48;
+  background-color: #F2DEDE;
+  border: 1px solid #EED3D7;
+}
+
+.parsley-errors-list {
+  margin: 2px 0 3px;
+  padding: 0;
+  list-style-type: none;
+  font-size: 0.9em;
+  line-height: 0.9em;
+  opacity: 0;
+
+  transition: all .3s ease-in;
+  -o-transition: all .3s ease-in;
+  -moz-transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
+}
+
+.parsley-errors-list.filled {
+  opacity: 1;
+}</style>
+	</head>
+<body>	
+<div class="container-fluid"style="margin-left: 0; padding-left: 0 ;margin-right: auto; padding-right: auto ;>
+		<div class="container" style="margin-left: 0; padding-left: 0 ;margin-right: auto; padding-right: auto ;">
+			<div class="formBox" >
+				<form method="post" action="/students/update/<%= doc._id %>" data-parsley-validate="">
+						<div class="row" style="background-color:#31DA89">
+							<div class="col-sm-12" >
+								<h1></br>Edit Form</h1>
+							</div>
+						</div></br></br>
+
+						<div class="row">
+						<div class="col-sm-2"></div>
+							<div class="col-sm-4">
+								<div class="inputBox ">
+									<div class="inputText">Username</div>
+									<input value="<%= doc.username %>" type="text" name="username" class="input" required="">
+								</div>
+							</div>
+
+							<div class="col-sm-4">
+								<div class="inputBox">
+									<div class="inputText">First Name</div>
+									<input value="<%= doc.firstname %>" type="text" name="firstname" class="input" required="">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+						<div class="col-sm-2"></div>
+							<div class="col-sm-4">
+								<div class="inputBox ">
+									<div class="inputText">Last Name</div>
+									<input value="<%= doc.lastname %> "type="text" name="lastname" class="input" required="">
+								</div>
+							</div>
+
+							<div class="col-sm-4">
+							
+								<div class="inputBox"></br></br></br>
+									<select  class="form-control" name="gender" id="sel1" >
+										<option value=""><%= doc.gender %></option>
+										
+										<% if(doc.gender=="Female"){ %>
+										<option value="Male">Male</option>
+											<% } else{ %>  
+											<option value="Female">Female</option>
+											<% } %>
+										
+										</select>
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+						<div class="col-sm-2"></div>
+							<div class="col-sm-4">
+								<div class="inputBox">
+									<div class="inputText">Birthday</div></br>
+									 <input value="<%= doc.birthday %>" type="date" class="form-control" name="birthday" id="exampleInputDOB1" placeholder="Date of Birth" required="">
+								</div>
+							</div>
+
+							<div class="col-sm-4">
+								<div class="inputBox">
+									<div class="inputText">Education</div>
+									<input value="<%= doc.education %>" type="text" name="education" class="input" required="">
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+						<div class="col-sm-2"></div>
+							<div class="col-sm-4">
+								<div class="inputBox ">
+									<div class="inputText">Email</div>
+									<input value="<%= doc.email %>" type="text" name="email" class="input" required="">
+								</div>
+							</div>
+
+							<div class="col-sm-4">
+								<div class="inputBox">
+									<div class="inputText">Password</div>
+									<input value="<%= doc.password %>" type="password" name="password" class="input" required="">
+								</div>
+							</div>
+						</div>
+						
+
+						<div class="row">
+						<div class="col-sm-2"></div>
+							<div class="col-sm-8">
+								<div class="inputBox">
+									<div class="inputText">Interested Fields</div>
+									<textarea class="input" name="infields"><%= doc.infields %></textarea>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-4"></div>
+							<div class="col-sm-4">
+								<button class="btn btn-danger" type="submit" style="width: 100%;
+							height: 50px;border-color: #31DA89;outline: none;background: #31DA89;color: white;">SAVE</button>
+								<!-- <input type="submit" name="" class="button" value="SUBMIT"> -->
+							</div>
+							
+						</div></br></br>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+	
+ 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.8.0/parsley.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.8.0/parsley.min.js"></script>
+	<script type="text/javascript">
+	 	$(".input").focus(function() {
+	 		$(this).parent().addClass("focus");
+	 	})
+	 </script>
+	 <script>
+	 $(document).ready(function(){
+    $("form").submit(function(){
+        alert("Editimi u krye me sukses ! ");
+    });
+});
+</script>
+
+<% include partials/footer %>
+
